@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Escuadra",
+        "price": 123.45,
+        "thumbnail": "https://www.testimg.com",
+        "id": 1
+    },
+    {
+        "title": "Regla",
+        "price": 99.99,
+        "thumbnail": "https://www.testimg.com",
+        "id": 2
+    },
+    {
+        "title": "Tijera",
+        "price": 150.73,
+        "thumbnail": "https://www.testimg.com",
+        "id": 3
+    },
+    {
+        "title": "Lápiz",
+        "price": 69.69,
+        "thumbnail": "https://www.testimg.com",
+        "id": 4
+    }
+]
