@@ -1,0 +1,27 @@
+{{#if savedProduct}}
+    <div class="alert alert-success" role="alert">
+        Producto agregado con éxito!
+    </div>
+{{/if}}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Ingrese producto</h1>
+            <form action="/api/productos/guardar" method="post">
+                <div class="my-3">
+                    <label class="form-label">Título del producto</label>
+                    <input type="text" value="" placeholder="Ingrese el título" name="title" class="form-control" />
+                </div>
+                <div class="my-3">
+                    <label class="form-label">Precio del producto</label>
+                    <input type="number" value="" placeholder="Ingrese el precio" name="price" class="form-control" />
+                </div>
+                <div class="my-3">
+                    <label class="form-label">URL de la imagen</label>
+                    <input type="text" value="" placeholder="Ingrese la URL" name="thumbnail" class="form-control" />
+                </div>
+                <button class="btn btn-outline-primary btn-lg mt-3" type="submit">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
