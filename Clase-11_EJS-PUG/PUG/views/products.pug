@@ -1,0 +1,49 @@
+doctype html
+html
+    include includes/head.pug
+    body 
+        include includes/navbar.pug
+
+        div(class="container")
+            h1 Vista de productos
+
+        unless productsAvailable
+            div(class="alert alert-warning" role="alert") No se encontraron productos
+        else
+            table(class="table")
+                thead 
+                    tr 
+                        th(scope="col") #
+                        th(scope="col") Nombre
+                        th(scope="col") Precio
+                        th(scope="col") Foto
+                tbody 
+                if products 
+                    each product in products
+                        tr 
+                            th(schope="row")= product.id
+                            td= product.title
+                            td= product.price 
+                            td
+                                img(
+                                    src=product.thumbnail
+                                    class="img-thumbnail" 
+                                    width="50"
+                                )
+                else if product 
+                    tr 
+                        th(schope="row")= product.id
+                        td= product.title
+                        td= product.price 
+                        td
+                            img(
+                                src=product.thumbnail
+                                class="img-thumbnail" 
+                                width="50"
+                            )
+
+        script(
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+            crossorigin="anonymous"
+        )
