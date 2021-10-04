@@ -1,0 +1,26 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damm17/Curso-BackEnd.git"
+  },
+  "author": "Damián Bertazza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/damm17/Curso-BackEnd/issues"
+  },
+  "homepage": "https://github.com/damm17/Curso-BackEnd#readme",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
+  }
+}
