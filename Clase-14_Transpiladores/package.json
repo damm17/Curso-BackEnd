@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "ServerES6toJS5": "node_modules/.bin/babel .\\server.es6.js -o .\\buildBabel\\server.js",
-    "ServerTStoJS5": ""
+    "ServerTStoJS5": "node_modules\\.bin\\tsc server.ts"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
     "express-session": "^1.17.2",
+    "file-system": "^2.2.2",
     "socket.io": "^4.2.0",
     "typescript": "^4.4.3"
   }

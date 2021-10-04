@@ -1,16 +1,23 @@
 /**/ 
-const express = require('express');
-const handlebars = require('express-handlebars');
-const session = require('express-session');
-const fs = require('fs');
-const { Server: HttpServer } = require('http');
-const { Server: IOServer } = require('socket.io');
+// const express = require('express');
+// const handlebars = require('express-handlebars');
+// const session = require('express-session');
+// const fs = require('fs');
+// const { Server: HttpServer } = require('http');
+// const { Server: IOServer } = require('socket.io');
+
+import express  from "express";
+import handlebars  from "express-handlebars";
+import { createServer } from "http";
+import { Server } from "socket.io";
+import fs from "file-system";
+import session from 'express-session';
 
 const app = express();
 const PORT = 8080;
 const router = express.Router();
-const httpServer = new HttpServer(app);
-const io = new IOServer(httpServer);
+const http=new createServer(app);
+const io = new Server(http);
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -38,11 +45,11 @@ app.set("views", "./views");
 
 app.use(express.static('public'));
 
-httpServer.listen(PORT, ()=>{
-    console.log('Servidor HTTP escuchando en el puerto', PORT);
+const server = http.listen (PORT, ()=>{
+    console.log("Servidor HTTP corriendo en", server.address().port);
 });
 
-let products = [];
+let products:Array<object> = [];
 
 app.get("/", (req, res) => {
     try {

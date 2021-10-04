@@ -1,25 +1,33 @@
+"use strict";
 /**/
-var express = require('express');
-var handlebars = require('express-handlebars');
-var session = require('express-session');
-var fs = require('fs');
-var HttpServer = require('http').Server;
-var IOServer = require('socket.io').Server;
-var app = express();
+// const express = require('express');
+// const handlebars = require('express-handlebars');
+// const session = require('express-session');
+// const fs = require('fs');
+// const { Server: HttpServer } = require('http');
+// const { Server: IOServer } = require('socket.io');
+exports.__esModule = true;
+var express_1 = require("express");
+var express_handlebars_1 = require("express-handlebars");
+var http_1 = require("http");
+var socket_io_1 = require("socket.io");
+var file_system_1 = require("file-system");
+var express_session_1 = require("express-session");
+var app = (0, express_1["default"])();
 var PORT = 8080;
-var router = express.Router();
-var httpServer = new HttpServer(app);
-var io = new IOServer(httpServer);
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(session({
+var router = express_1["default"].Router();
+var http = new http_1.createServer(app);
+var io = new socket_io_1.Server(http);
+app.use(express_1["default"].json());
+app.use(express_1["default"].urlencoded({ extended: true }));
+app.use((0, express_session_1["default"])({
     secret: 'mySecret',
     resave: false,
     saveUninitialized: false
 }));
 app.use('/api', router);
 // Config de handlebars
-app.engine("hbs", handlebars({
+app.engine("hbs", (0, express_handlebars_1["default"])({
     extname: ".hbs",
     defaultLayout: "index.hbs",
     layoutsDir: __dirname + "/views/layouts/",
@@ -27,9 +35,9 @@ app.engine("hbs", handlebars({
 }));
 app.set("view engine", "hbs");
 app.set("views", "./views");
-app.use(express.static('public'));
-httpServer.listen(PORT, function () {
-    console.log('Servidor HTTP escuchando en el puerto', PORT);
+app.use(express_1["default"].static('public'));
+var server = http.listen(PORT, function () {
+    console.log("Servidor HTTP corriendo en", server.address().port);
 });
 var products = [];
 app.get("/", function (req, res) {
@@ -139,7 +147,7 @@ io.on('connection', function (socket) {
     var chats = {
         messages: []
     };
-    fs.readFile(__dirname + "/logs/chat.json", 'utf8', function (err, data) {
+    file_system_1["default"].readFile(__dirname + "/logs/chat.json", 'utf8', function (err, data) {
         if (!err) {
             chats.messages = JSON.parse(data).messages;
             socket.emit('chat', chats.messages);
@@ -147,7 +155,7 @@ io.on('connection', function (socket) {
     });
     socket.on('chatMsg', function (data) {
         chats.messages.push(data);
-        fs.writeFile(__dirname + "/logs/chat.json", JSON.stringify(chats, null, "\t"), 'utf8', function (err, data) {
+        file_system_1["default"].writeFile(__dirname + "/logs/chat.json", JSON.stringify(chats, null, "\t"), 'utf8', function (err, data) {
             if (!err) {
                 io.sockets.emit('chat', chats.messages);
             }
