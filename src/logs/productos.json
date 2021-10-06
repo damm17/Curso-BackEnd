@@ -1,0 +1,24 @@
+{
+	"productos": [
+		{
+			"id": "c669cb40-71b7-4ca1-812b-a14ab1ed5cb6",
+			"timestamp": 1633540858070,
+			"name": "Test-2",
+			"description": "Producto de Prueba",
+			"code": "SKU-0002",
+			"image": "http://www.ejemplo-imagen.com/imagen.jpg",
+			"price": 750,
+			"stock": 99
+		},
+		{
+			"id": "aa9c7ce6-7711-4611-8b89-8bdce4b30e95",
+			"timestamp": 1633548131949,
+			"name": "Test-3",
+			"description": "Producto de Prueba",
+			"code": "SKU-0003",
+			"image": "http://www.ejemplo-imagen.com/imagen.jpg",
+			"price": 550,
+			"stock": 99
+		}
+	]
+}

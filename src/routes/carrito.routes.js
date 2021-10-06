@@ -11,7 +11,7 @@ const carritoRouter = Router();
 carritoRouter
 	.get("/", getCarrito)
 	.get("/productos", getProductsFromCarrito)
-	.post("/productos", agregarProducto)
-	.delete("/productos/:id", borrarProducto);
+	.post("/producto", agregarProducto)
+	.delete("/producto/:id", borrarProducto);
 
 export default carritoRouter;
