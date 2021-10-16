@@ -14,18 +14,14 @@ app.use(session({
     saveUninitialized: false
 }))
 
-app.use('/api', productosRouter);
-
-console.log(__dirname)
-
 // Config de handlebars
 app.engine(
     "hbs",
     handlebars({
         extname: ".hbs",
         defaultLayout: "index.hbs",
-        layoutsDir: __dirname,
-        partialsDir: "/public/views/partials/"
+        layoutsDir: `${__dirname}/../../views/layouts`,
+        partialsDir: `${__dirname}/../../views/partials`
     })
 );
 
@@ -33,5 +29,17 @@ app.set("view engine", "hbs");
 app.set("views", "./views");
 
 app.use(Express.static('public'));
+
+app.get("/", (req, res) => {
+    try {
+        const savedProduct = req.session.savedProduct;
+        res.render("main", { savedProduct })
+        req.session.savedProduct = false;
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+app.use('/api', productosRouter);
 
 export default app;
