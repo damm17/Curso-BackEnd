@@ -1,0 +1,42 @@
+<div class="container">
+    <h1>Vista de productos</h1>
+
+    {{#unless productsAvailable}}
+    <div class="alert alert-warning" role="alert">
+        No se encontraron productos
+    </div>
+
+    {{else}}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Foto</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#if products}}
+                    {{#each products}}
+                    <tr>
+                        <th scope="row">{{this._id}}</th>
+                        <td>{{this.title}}</td>
+                        <td>{{this.price}}</td>
+                        <td><img src={{this.thumbnail}} class="img-thumbnail" width="50" /></td>
+                    </tr>
+                    {{/each}}
+                {{else if product}}
+                 {{#each product}}
+                    <tr>
+                        <th scope="row">{{this._id}}</th>
+                        <td>{{this.title}}</td>
+                        <td>{{this.price}}</td>
+                        <td><img src={{this.thumbnail}} class="img-thumbnail" width="50" /></td>
+                    </tr>
+                    {{/each}}
+                {{/if}}
+            </tbody>
+        </table>
+    {{/unless}}
+</div>
